@@ -12,13 +12,11 @@ export default class App extends Component {
   };
 
   countTotalFeedback = () => {
-    const total = this.state.good + this.state.bad + this.state.neutral;
-    return total;
+    return Object.values(this.state).reduce((a, b) => a + b);
   };
 
   countPositiveFeedbackPercentage = () => {
-    const percentage = (this.state.good / this.countTotalFeedback()) * 100;
-    return percentage;
+    return (this.state.good / this.countTotalFeedback()) * 100;
   };
 
   addFeedback = (field) => {
